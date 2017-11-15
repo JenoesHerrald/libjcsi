@@ -274,18 +274,19 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
 
 			}
 
-			if (!read.hasRepresentation()) {
+			if (read.code == CharKey.ENTER) {
+				// return the input from the user
+				return ret;
+
+			}
+
+			if (!read.hasRepresentation() && !(read.code == CharKey.BACKSPACE)) {
 				// don't add unrepresented chars to user input Exmp. arrow keys, F1, F2 ..
 				read.code = CharKey.NONE;
 				continue;
 
 			}
 
-			if (read.code == CharKey.ENTER) {
-				// return the input from the user
-				return ret;
-
-			}
 			if (read.code == CharKey.BACKSPACE) {
 				// delete chars if we have any
 				if (ret.equals("")) {
