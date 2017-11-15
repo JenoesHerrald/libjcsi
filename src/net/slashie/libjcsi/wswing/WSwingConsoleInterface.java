@@ -274,20 +274,25 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
 
 			}
 
-			if (read.isUpArrow() || read.isDownArrow() || read.isRightArrow() || read.isLeftArrow()) {
-				// don't add the arrowkeys to the resulting string
+			if (read.toString().length() != 1) {
+				// don't add any non single char inputs to the user input
 				read.code = CharKey.NONE;
 				continue;
 
 			}
 
 			if (read.code == CharKey.ENTER) {
+				// return the input from the user
 				return ret;
+
 			}
 			if (read.code == CharKey.BACKSPACE) {
+				// delete chars if we have any
 				if (ret.equals("")) {
+					// we cannot delete any chars because we dont have any
 					read.code = CharKey.NONE;
 					continue;
+
 				}
 				if (ret.length() > 1) {
 					ret = ret.substring(0, ret.length() - 1);
@@ -299,8 +304,10 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
 
 			} else {
 				if (ret.length() >= l) {
+					// if we're already at the limit don't add any chars
 					read.code = CharKey.NONE;
 					continue;
+
 				}
 				String nuevo = read.toString();
 				print(caretPosition.x, caretPosition.y, nuevo);
@@ -311,7 +318,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
 			read.code = CharKey.NONE;
 
 		}
-		// return ret;
+
 	}
 
 	public synchronized void refresh(Thread toNotify) {
