@@ -274,8 +274,8 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
 
 			}
 
-			if (read.isDownArrow() || read.isUpArrow() || read.isLeftArrow() || read.isRightArrow()) {
-				// don't add the arrow keys to the input
+			if (read.hasRepresentation()) {
+				// don't add unrepresented chars to user input Exmp. arrow keys, F1, F2 ..
 				read.code = CharKey.NONE;
 				continue;
 
@@ -289,7 +289,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
 			if (read.code == CharKey.BACKSPACE) {
 				// delete chars if we have any
 				if (ret.equals("")) {
-					// we cannot delete any chars because we dont have any
+					// we cannot delete any chars because we don't have any
 					read.code = CharKey.NONE;
 					continue;
 

@@ -98,6 +98,30 @@ public class CharKey {
     }
 
     /**
+     * @return true if there is no representation for this CharKey
+     */
+    public boolean hasRepresentation() {
+        if (code >= 90 && code <= 115) {
+            return true;
+        }
+        if (code >= 64 && code <= 89) {
+        	return true;
+        }
+        if (code >= 117 && code <= 126) {
+        	return true;
+        }
+        if (code >= 130 && code <= 139){
+        	return true;
+        }
+        String ret = (String) mirrors.get("" + code);
+        if (ret != null) {
+            return true;
+        } else {
+        	return false;
+        }
+    }
+
+    /**
      * Can be used to determine if current CharKey is a directional character.
      * @return true if directional character
      */
