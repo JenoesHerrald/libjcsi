@@ -274,8 +274,8 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
 
 			}
 
-			if (read.toString().length() != 1) {
-				// don't add any non single char inputs to the user input
+			if (read.isDownArrow() || read.isUpArrow() || read.isLeftArrow() || read.isRightArrow()) {
+				// don't add the arrow keys to the input
 				read.code = CharKey.NONE;
 				continue;
 
