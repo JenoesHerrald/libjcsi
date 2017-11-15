@@ -274,7 +274,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
 
 			}
 
-			if (read.hasRepresentation()) {
+			if (!read.hasRepresentation()) {
 				// don't add unrepresented chars to user input Exmp. arrow keys, F1, F2 ..
 				read.code = CharKey.NONE;
 				continue;
