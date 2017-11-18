@@ -1,7 +1,10 @@
-
 #eclipse
 .project
 .classpath
 *.launch
 .settings/
 /build/
+
+#gradle
+/.gradle/
+/bin/
