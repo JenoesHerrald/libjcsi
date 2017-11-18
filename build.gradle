@@ -46,7 +46,7 @@ jar {
 }
 
 task packLibsForJar (type: Copy) {
-	def toDir = "build/libs/depends"
+	def toDir = "build/libs/"
 
 	// create directories, if not already done:
 	file(toDir).mkdirs()
